@@ -98,3 +98,177 @@ if (contactDetails) {
     item.classList.add('contact-item-premium');
   });
 }
+
+/* ==========================================================
+   InduTradex Stage 1 — Premium Website AI Chat Widget
+   Front-end only: menu + smart product/business responses.
+   Stage 2 will connect this interface to a real AI backend/API.
+   ========================================================== */
+(() => {
+  if (document.querySelector('#indxChatPanel')) return;
+
+  const chatMarkup = `
+    <button class="indx-chat-launcher" id="indxChatLauncher" type="button" aria-expanded="false" aria-controls="indxChatPanel">
+      <span class="indx-chat-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 11.5a8.5 8.5 0 0 1-12.7 7.4L4 20l1.2-3.1A8.5 8.5 0 1 1 20 11.5Z"></path><path d="M8 11h.01M12 11h.01M16 11h.01"></path></svg></span>
+      <span>Chat with InduTradex</span>
+    </button>
+    <section class="indx-chat-panel" id="indxChatPanel" aria-label="InduTradex AI assistant" aria-hidden="true">
+      <div class="indx-chat-head">
+        <div class="indx-chat-brand">
+          <div class="indx-chat-avatar">I</div>
+          <div><div class="indx-chat-title">InduTradex AI Assistant</div><span class="indx-chat-subtitle">B2B sourcing • Export • Private Label</span></div>
+        </div>
+        <button class="indx-chat-close" id="indxChatClose" type="button" aria-label="Close chat">×</button>
+      </div>
+      <div class="indx-chat-messages" id="indxChatMessages" role="log" aria-live="polite"></div>
+      <div class="indx-chat-input">
+        <input id="indxChatInput" type="text" maxlength="500" autocomplete="off" placeholder="Ask about products, bulk supply…" aria-label="Message">
+        <button class="indx-chat-send" id="indxChatSend" type="button" aria-label="Send message">→</button>
+      </div>
+      <div class="indx-chat-note">Stage 1 preview • AI connection will be added in Stage 2</div>
+    </section>`;
+
+  document.body.insertAdjacentHTML('beforeend', chatMarkup);
+
+  const launcher = document.querySelector('#indxChatLauncher');
+  const panel = document.querySelector('#indxChatPanel');
+  const close = document.querySelector('#indxChatClose');
+  const messages = document.querySelector('#indxChatMessages');
+  const input = document.querySelector('#indxChatInput');
+  const send = document.querySelector('#indxChatSend');
+
+  const WA_NUMBER = '919973060050';
+  const waIcon = '<svg viewBox="0 0 24 24"><path d="M20 11.5a8.5 8.5 0 0 1-12.7 7.4L4 20l1.2-3.1A8.5 8.5 0 1 1 20 11.5Z"></path><path d="M8.8 8.2c.2-.5.4-.5.7.4l.7 1.7c.1.3 0 .5-.2.7l-.5.5c.5 1 1.3 1.8 2.3 2.3l.5-.5c.2-.2.4-.3.7-.2l1.7.7c.3.1.4.3.4.5v.5c0 .3 0 .5-.5.7"></path></svg>';
+
+  const productReplies = {
+    makhana: `Premium Makhana / Fox Nuts are available for B2B sourcing. Current site information covers 3–4 Sutta, 5 Sutta and 6 Sutta & above grades. For exact availability, pricing, MOQ and specifications, I can connect you with the InduTradex team.`,
+    roasted: `Roasted & Flavoured Makhana is offered in modern snack formats, with flavour options such as masala, peri peri and pudina. Private-label discussions can be based on your project requirements.`,
+    turmeric: `InduTradex sources Indian turmeric for food businesses, wholesalers, distributors and international buyers, including whole and powder formats. Exact specifications and commercial terms are confirmed per enquiry.`,
+    spices: `Indian Spices can be sourced in whole, ground and blended formats for commercial food production, wholesale and retail. Tell me the spice, quantity and destination and I can guide you to an enquiry.`,
+    dryfruits: `Premium Dry Fruits are available for wholesale, retail, food-service and distribution requirements. Availability, specifications and pricing depend on the product and order requirement.`,
+    private: `Private-label projects can cover suitable Makhana and food products. The usual discussion includes product, flavour, packaging, MOQ, branding and export feasibility.`
+  };
+
+  function addMessage(text, who = 'bot') {
+    const div = document.createElement('div');
+    div.className = `indx-msg ${who}`;
+    div.textContent = text;
+    messages.appendChild(div);
+    messages.scrollTop = messages.scrollHeight;
+  }
+
+  function addQuickButtons(items) {
+    const wrap = document.createElement('div');
+    wrap.className = 'indx-quick';
+    items.forEach(item => {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.textContent = item.label;
+      button.dataset.action = item.action || '';
+      button.addEventListener('click', () => handleAction(item.action, item.label));
+      wrap.appendChild(button);
+    });
+    messages.appendChild(wrap);
+    messages.scrollTop = messages.scrollHeight;
+  }
+
+  function addWhatsAppButton() {
+    const wrap = document.createElement('div');
+    wrap.className = 'indx-quick';
+    const a = document.createElement('a');
+    a.className = 'indx-quick button indx-wa-handoff';
+    a.href = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent('Hello InduTradex, I would like to make a B2B enquiry.')}`;
+    a.target = '_blank';
+    a.rel = 'noopener';
+    a.innerHTML = `${waIcon}<span>Talk to our team on WhatsApp</span>`;
+    wrap.appendChild(a);
+    messages.appendChild(wrap);
+    messages.scrollTop = messages.scrollHeight;
+  }
+
+  function welcome() {
+    if (messages.childElementCount) return;
+    addMessage('👋 Welcome to InduTradex. I can help with products, bulk sourcing, export and private-label enquiries.');
+    addQuickButtons([
+      {label:'Premium Makhana', action:'makhana'},
+      {label:'Roasted & Flavoured', action:'roasted'},
+      {label:'Turmeric', action:'turmeric'},
+      {label:'Indian Spices', action:'spices'},
+      {label:'Dry Fruits', action:'dryfruits'},
+      {label:'Private Label', action:'private'},
+      {label:'Bulk / Export Enquiry', action:'enquiry'},
+      {label:'Talk to Team', action:'whatsapp'}
+    ]);
+  }
+
+  function handleAction(action, label = '') {
+    if (label) addMessage(label, 'user');
+    if (productReplies[action]) {
+      addMessage(productReplies[action]);
+      addQuickButtons([{label:'Request a Quote', action:'enquiry'}, {label:'WhatsApp Team', action:'whatsapp'}]);
+      return;
+    }
+    if (action === 'enquiry') {
+      addMessage('Great. Please share your product, approximate quantity and destination country. You can also use the Business Enquiry form for full details.');
+      addQuickButtons([{label:'Open Business Enquiry', action:'quote'}, {label:'WhatsApp Team', action:'whatsapp'}]);
+      return;
+    }
+    if (action === 'quote') {
+      document.querySelector('#quote')?.scrollIntoView({behavior:'smooth'});
+      closeChat();
+      return;
+    }
+    if (action === 'whatsapp') {
+      addMessage('You can continue directly with the InduTradex team on WhatsApp.');
+      addWhatsAppButton();
+    }
+  }
+
+  function smartReply(text) {
+    const q = text.toLowerCase();
+    if (/makhana|fox nut|sutta/.test(q)) return productReplies.makhana;
+    if (/roasted|flavour|flavored|peri peri|pudina/.test(q)) return productReplies.roasted;
+    if (/turmeric|haldi/.test(q)) return productReplies.turmeric;
+    if (/spice|masala/.test(q)) return productReplies.spices;
+    if (/dry fruit|almond|cashew|raisin|pista/.test(q)) return productReplies.dryfruits;
+    if (/private label|own brand|branding/.test(q)) return productReplies.private;
+    if (/price|pricing|cost|rate|quote|quotation|moq|minimum order|bulk|kg|ton|export|ship|shipping|destination/.test(q)) return 'I can help start a B2B enquiry. Please share the product, quantity and destination country. Exact pricing, MOQ, specifications and shipment terms are confirmed by the InduTradex team for each requirement.';
+    if (/hello|hi|hey|namaste/.test(q)) return 'Hello! 👋 What would you like to source from India today?';
+    if (/human|team|person|sales|whatsapp/.test(q)) return 'Absolutely. I can connect you with the InduTradex team on WhatsApp.';
+    return 'I can help with Premium Makhana, Roasted & Flavoured Makhana, Turmeric, Indian Spices, Dry Fruits, private label, bulk sourcing and export enquiries. Tell me what you are looking for.';
+  }
+
+  function sendMessage() {
+    const text = input.value.trim();
+    if (!text) return;
+    addMessage(text, 'user');
+    input.value = '';
+    send.disabled = true;
+    window.setTimeout(() => {
+      addMessage(smartReply(text));
+      if (/whatsapp|human|team|sales|person/.test(text.toLowerCase())) addWhatsAppButton();
+      else addQuickButtons([{label:'Bulk / Export Enquiry', action:'enquiry'}, {label:'WhatsApp Team', action:'whatsapp'}]);
+      send.disabled = false;
+      input.focus();
+    }, 350);
+  }
+
+  function openChat() {
+    panel.classList.add('open');
+    panel.setAttribute('aria-hidden','false');
+    launcher.setAttribute('aria-expanded','true');
+    welcome();
+    window.setTimeout(() => input.focus(), 50);
+  }
+  function closeChat() {
+    panel.classList.remove('open');
+    panel.setAttribute('aria-hidden','true');
+    launcher.setAttribute('aria-expanded','false');
+  }
+
+  launcher.addEventListener('click', () => panel.classList.contains('open') ? closeChat() : openChat());
+  close.addEventListener('click', closeChat);
+  send.addEventListener('click', sendMessage);
+  input.addEventListener('keydown', e => { if (e.key === 'Enter') sendMessage(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeChat(); });
+})();
