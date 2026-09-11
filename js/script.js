@@ -70,17 +70,11 @@ document.querySelectorAll('a[href="#top"]').forEach((link) => {
   });
 });
 
-/* Add second WhatsApp contact */
-const SECOND_WHATSAPP = '9779717237730';
-const contactDetails = document.querySelector('.contact-details');
-if (contactDetails && !contactDetails.querySelector('[data-second-whatsapp]')) {
-  const link = document.createElement('a');
-  link.href = `https://wa.me/${SECOND_WHATSAPP}`;
-  link.target = '_blank';
-  link.rel = 'noopener';
-  link.dataset.secondWhatsapp = 'true';
-  link.innerHTML = '<span>WhatsApp</span>+977 9717237730';
-  const existing = contactDetails.querySelector('a[href*="wa.me"]');
-  if (existing) existing.insertAdjacentElement('afterend', link);
-  else contactDetails.appendChild(link);
+/* Show both WhatsApp numbers under ONE WhatsApp label. */
+const whatsapp = document.querySelector('.contact-details a[href*="wa.me"]');
+if (whatsapp) {
+  whatsapp.href = 'https://wa.me/919973060050';
+  whatsapp.target = '_blank';
+  whatsapp.rel = 'noopener';
+  whatsapp.innerHTML = '<span>WhatsApp</span>+91 99730 60050<br>+977 9717237730';
 }
