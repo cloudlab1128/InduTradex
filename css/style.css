@@ -5,3 +5,30 @@
 .photo-roasted{background-image:linear-gradient(180deg,#0000,#3e2103b8),url('../assets/images/roasted-makhana.jpg.png') !important;}
 .photo-turmeric{background-image:linear-gradient(180deg,#0000,#4b2a04a8),url('../assets/images/turmeric.jpg.jpg') !important;}
 .photo-dry{background-image:linear-gradient(180deg,#0000,#21170ab8),url('../assets/images/dry-fruits.jpg.jpg') !important;}
+
+/* Premium contact icon treatment */
+.contact-item-premium > span:first-child{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  margin-bottom:6px;
+  color:#b58a3a;
+  font-size:.72rem;
+  font-weight:700;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+.contact-item-premium > span:first-child svg{
+  width:18px;
+  height:18px;
+  flex:0 0 18px;
+  fill:none;
+  stroke:currentColor;
+  stroke-width:1.65;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  filter:drop-shadow(0 1px 2px rgba(0,0,0,.08));
+}
+.contact-item-premium .contact-label{color:inherit;}
+.contact-item-premium:hover > span:first-child{color:#d1a85b;}
+.contact-item-premium a{color:inherit;}
