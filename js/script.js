@@ -57,3 +57,15 @@ quoteForm?.addEventListener('submit', async (e) => {
     submitButton.textContent = originalText;
   }
 });
+
+/* Home button: always return to the very top and close the mobile menu. */
+document.querySelectorAll('a[href="#top"]').forEach((link) => {
+  link.addEventListener('click', (event) => {
+    event.preventDefault();
+    nav?.classList.remove('open');
+    toggle?.setAttribute('aria-expanded', 'false');
+    document.body.classList.remove('menu-open');
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+    history.replaceState(null, document.title, window.location.pathname + window.location.search);
+  });
+});
