@@ -70,11 +70,34 @@ document.querySelectorAll('a[href="#top"]').forEach((link) => {
   });
 });
 
-/* Show both WhatsApp numbers under ONE WhatsApp label. */
+/* Contact section: replace text labels with clean, accessible icons. */
+const contactDetails = document.querySelector('.contact-details');
+if (contactDetails) {
+  const labels = contactDetails.querySelectorAll(':scope > a > span, :scope > div > span');
+  const iconMap = {
+    Email: ['✉', 'Email'],
+    WhatsApp: ['◉', 'WhatsApp'],
+    Export: ['⇄', 'Export'],
+    Origin: ['⌖', 'Origin']
+  };
+
+  labels.forEach((label) => {
+    const key = label.textContent.trim();
+    const icon = iconMap[key];
+    if (icon) {
+      label.textContent = icon[0];
+      label.setAttribute('aria-label', icon[1]);
+      label.setAttribute('title', icon[1]);
+      label.classList.add('contact-icon');
+    }
+  });
+}
+
+/* Show both WhatsApp numbers under ONE WhatsApp icon. */
 const whatsapp = document.querySelector('.contact-details a[href*="wa.me"]');
 if (whatsapp) {
   whatsapp.href = 'https://wa.me/919973060050';
   whatsapp.target = '_blank';
   whatsapp.rel = 'noopener';
-  whatsapp.innerHTML = '<span>WhatsApp</span>+91 99730 60050<br>+977 9717237730';
+  whatsapp.innerHTML = '<span class="contact-icon" aria-label="WhatsApp" title="WhatsApp">◉</span>+91 99730 60050<br>+977 9717237730';
 }
