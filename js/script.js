@@ -69,3 +69,18 @@ document.querySelectorAll('a[href="#top"]').forEach((link) => {
     history.replaceState(null, document.title, window.location.pathname + window.location.search);
   });
 });
+
+/* Add second WhatsApp contact */
+const SECOND_WHATSAPP = '9779717237730';
+const contactDetails = document.querySelector('.contact-details');
+if (contactDetails && !contactDetails.querySelector('[data-second-whatsapp]')) {
+  const link = document.createElement('a');
+  link.href = `https://wa.me/${SECOND_WHATSAPP}`;
+  link.target = '_blank';
+  link.rel = 'noopener';
+  link.dataset.secondWhatsapp = 'true';
+  link.innerHTML = '<span>WhatsApp</span>+977 9717237730';
+  const existing = contactDetails.querySelector('a[href*="wa.me"]');
+  if (existing) existing.insertAdjacentElement('afterend', link);
+  else contactDetails.appendChild(link);
+}
