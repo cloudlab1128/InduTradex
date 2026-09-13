@@ -86,15 +86,14 @@ if (contactDetails) {
 
   const social = document.createElement('div');
   social.className = 'indx-social-links';
-  social.style.cssText = 'margin-top:24px;padding-top:18px;border-top:1px solid rgba(255,255,255,.18);';
   social.innerHTML = `
-    <span style="display:block;margin-bottom:12px;color:#b58a3a;font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;">Connect with us</span>
-    <div style="display:flex;align-items:center;gap:12px;">
-      <a href="https://www.facebook.com/share/1DcjmLM7i1/" target="_blank" rel="noopener noreferrer" aria-label="InduTradex on Facebook" title="Facebook" style="width:50px;height:50px;display:grid;place-items:center;border-radius:13px;text-decoration:none;background:#1877f2;color:#fff;box-shadow:0 8px 18px rgba(0,0,0,.14);">
-        <svg viewBox="0 0 24 24" aria-hidden="true" style="width:29px;height:29px;fill:currentColor;"><path d="M14 8h3V4h-3c-3.1 0-5 1.9-5 5v3H6v4h3v4h4v-4h3.2l.8-4H13V9c0-.7.3-1 1-1Z"></path></svg>
+    <span class="indx-social-title">FOLLOW US</span>
+    <div class="indx-social-icons">
+      <a href="https://www.facebook.com/share/1DcjmLM7i1/" target="_blank" rel="noopener noreferrer" aria-label="InduTradex on Facebook" title="Facebook" class="indx-social-facebook">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 8h3V4h-3c-3.1 0-5 1.9-5 5v3H6v4h3v4h4v-4h3.2l.8-4H13V9c0-.7.3-1 1-1Z"></path></svg>
       </a>
-      <a href="https://www.instagram.com/indu.tradex?stkn=MWYyaTRrbG04N2RsZg==" target="_blank" rel="noopener noreferrer" aria-label="InduTradex on Instagram" title="Instagram" style="width:50px;height:50px;display:grid;place-items:center;border-radius:13px;text-decoration:none;background:linear-gradient(135deg,#833ab4,#e1306c 48%,#fd1d1d 72%,#fcb045);color:#fff;box-shadow:0 8px 18px rgba(0,0,0,.14);">
-        <svg viewBox="0 0 24 24" aria-hidden="true" style="width:29px;height:29px;display:block;"><rect x="4" y="4" width="16" height="16" rx="5" fill="none" stroke="currentColor" stroke-width="2"></rect><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"></circle><circle cx="17.5" cy="6.5" r="1.1" fill="currentColor"></circle></svg>
+      <a href="https://www.instagram.com/indu.tradex?stkn=MWYyaTRrbG04N2RsZg==" target="_blank" rel="noopener noreferrer" aria-label="InduTradex on Instagram" title="Instagram" class="indx-social-instagram">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="5" fill="none" stroke="currentColor" stroke-width="2"></rect><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"></circle><circle cx="17.5" cy="6.5" r="1.1" fill="currentColor"></circle></svg>
       </a>
     </div>`;
   contactDetails.appendChild(social);
