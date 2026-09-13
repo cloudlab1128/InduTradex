@@ -13,6 +13,19 @@
 .contact-item-premium:hover > span:first-child{color:#d1a85b;}
 .contact-item-premium a{color:inherit;}
 
+/* Premium social icons */
+.indx-social-links{margin-top:18px!important;padding-top:0!important;border-top:0!important;}
+.indx-social-icons{display:flex!important;align-items:center!important;gap:10px!important;}
+.indx-social-icons a{position:relative!important;width:34px!important;height:34px!important;display:grid!important;place-items:center!important;border-radius:10px!important;overflow:hidden!important;text-decoration:none!important;border:1px solid rgba(255,255,255,.24)!important;box-shadow:0 5px 14px rgba(0,0,0,.18),inset 0 1px 0 rgba(255,255,255,.28)!important;transition:transform .2s ease,box-shadow .2s ease,filter .2s ease!important;}
+.indx-social-icons a:hover{transform:translateY(-2px) scale(1.04)!important;box-shadow:0 8px 18px rgba(0,0,0,.24),inset 0 1px 0 rgba(255,255,255,.35)!important;filter:saturate(1.08)!important;}
+.indx-social-icons a:focus-visible{outline:2px solid #d1a85b!important;outline-offset:3px!important;}
+.indx-social-icons a:first-child{background:linear-gradient(145deg,#1877f2,#0d5dcc)!important;}
+.indx-social-icons a:last-child{background:linear-gradient(145deg,#833ab4 0%,#e1306c 45%,#fd1d1d 72%,#fcb045 100%)!important;}
+.indx-social-icons a svg{width:19px!important;height:19px!important;display:block!important;filter:drop-shadow(0 1px 1px rgba(0,0,0,.16));}
+.indx-social-icons a:first-child svg{fill:#fff!important;}
+.indx-social-icons a:last-child svg{color:#fff!important;}
+@media(max-width:600px){.indx-social-icons a{width:32px!important;height:32px!important;border-radius:9px!important;}.indx-social-icons a svg{width:18px!important;height:18px!important;}}
+
 /* Premium InduTradex AI chat widget — Stage 1 front-end */
 .indx-chat-launcher{position:fixed;right:22px;bottom:22px;z-index:9998;display:flex;align-items:center;gap:10px;border:0;border-radius:999px;padding:12px 17px 12px 13px;background:#075c3b;color:#fff;box-shadow:0 14px 34px rgba(7,92,59,.28);font:700 14px/1 'DM Sans',sans-serif;cursor:pointer;transition:transform .2s ease,box-shadow .2s ease;}
 .indx-chat-launcher:hover{transform:translateY(-2px);box-shadow:0 18px 40px rgba(7,92,59,.34);}
