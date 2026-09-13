@@ -86,18 +86,14 @@ if (contactDetails) {
 
   const social = document.createElement('div');
   social.className = 'indx-social-links';
-  social.style.cssText = 'margin-top:22px;padding-top:18px;border-top:1px solid rgba(255,255,255,.18);';
+  social.style.cssText = 'margin-top:18px;padding-top:0;border-top:0;';
   social.innerHTML = `
-    <div class="indx-social-title" style="position:relative;display:inline-flex;align-items:center;justify-content:center;min-width:112px;height:34px;padding:0 14px;margin-bottom:13px;border:1.5px solid rgba(255,255,255,.9);border-radius:12px;color:#fff;font-size:.76rem;font-weight:800;letter-spacing:.10em;text-transform:uppercase;line-height:1;box-sizing:border-box;">
-      FOLLOW US
-      <span aria-hidden="true" style="position:absolute;left:50%;bottom:-8px;width:14px;height:14px;background:var(--green-dark,#075c3b);border-right:1.5px solid rgba(255,255,255,.9);border-bottom:1.5px solid rgba(255,255,255,.9);transform:translateX(-50%) rotate(45deg);"></span>
-    </div>
-    <div class="indx-social-icons" style="display:flex;align-items:center;gap:12px;">
-      <a href="https://www.facebook.com/share/1DcjmLM7i1/" target="_blank" rel="noopener noreferrer" aria-label="InduTradex on Facebook" title="Facebook" style="width:44px;height:44px;display:grid;place-items:center;border-radius:10px;text-decoration:none;background:#1877f2;color:#fff;box-shadow:0 6px 16px rgba(0,0,0,.16);transition:transform .2s ease,box-shadow .2s ease;">
-        <svg viewBox="0 0 24 24" aria-hidden="true" style="width:25px;height:25px;fill:currentColor;"><path d="M14 8h3V4h-3c-3.1 0-5 1.9-5 5v3H6v4h3v4h4v-4h3.2l.8-4H13V9c0-.7.3-1 1-1Z"></path></svg>
+    <div class="indx-social-icons" style="display:flex;align-items:center;gap:9px;">
+      <a href="https://www.facebook.com/share/1DcjmLM7i1/" target="_blank" rel="noopener noreferrer" aria-label="InduTradex on Facebook" title="Facebook" style="width:28px;height:28px;display:grid;place-items:center;border-radius:7px;text-decoration:none;background:#1877f2;color:#fff;box-shadow:0 3px 8px rgba(0,0,0,.14);transition:transform .2s ease,box-shadow .2s ease;">
+        <svg viewBox="0 0 24 24" aria-hidden="true" style="width:17px;height:17px;fill:currentColor;"><path d="M14 8h3V4h-3c-3.1 0-5 1.9-5 5v3H6v4h3v4h4v-4h3.2l.8-4H13V9c0-.7.3-1 1-1Z"></path></svg>
       </a>
-      <a href="https://www.instagram.com/indu.tradex?stkn=MWYyaTRrbG04N2RsZg==" target="_blank" rel="noopener noreferrer" aria-label="InduTradex on Instagram" title="Instagram" style="width:44px;height:44px;display:grid;place-items:center;border-radius:10px;text-decoration:none;background:linear-gradient(135deg,#833ab4,#e1306c 48%,#fd1d1d 72%,#fcb045);color:#fff;box-shadow:0 6px 16px rgba(0,0,0,.16);transition:transform .2s ease,box-shadow .2s ease;">
-        <svg viewBox="0 0 24 24" aria-hidden="true" style="width:25px;height:25px;display:block;"><rect x="4" y="4" width="16" height="16" rx="5" fill="none" stroke="currentColor" stroke-width="2"></rect><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"></circle><circle cx="17.5" cy="6.5" r="1.1" fill="currentColor"></circle></svg>
+      <a href="https://www.instagram.com/indu.tradex?stkn=MWYyaTRrbG04N2RsZg==" target="_blank" rel="noopener noreferrer" aria-label="InduTradex on Instagram" title="Instagram" style="width:28px;height:28px;display:grid;place-items:center;border-radius:7px;text-decoration:none;background:linear-gradient(135deg,#833ab4,#e1306c 48%,#fd1d1d 72%,#fcb045);color:#fff;box-shadow:0 3px 8px rgba(0,0,0,.14);transition:transform .2s ease,box-shadow .2s ease;">
+        <svg viewBox="0 0 24 24" aria-hidden="true" style="width:17px;height:17px;display:block;"><rect x="4" y="4" width="16" height="16" rx="5" fill="none" stroke="currentColor" stroke-width="2"></rect><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"></circle><circle cx="17.5" cy="6.5" r="1.1" fill="currentColor"></circle></svg>
       </a>
     </div>`;
   contactDetails.appendChild(social);
