@@ -9,7 +9,16 @@
 /* Premium smooth product image hover — effect only, no zoom cursor */
 .product-photo{cursor:default;background-size:cover;transition:background-size .55s cubic-bezier(.22,.61,.36,1),filter .45s ease;will-change:background-size;}
 .product-card:hover .product-photo{background-size:110%;filter:saturate(1.04) brightness(1.015);}
-@media(max-width:520px){.product-card:hover .product-photo{background-size:108%;}}
+@media(max-width:520px){
+  .product-photo{
+    height:230px;
+    background-size:contain !important;
+    background-position:center !important;
+    background-repeat:no-repeat !important;
+    background-color:#f5f1e7;
+  }
+  .product-card:hover .product-photo{background-size:contain !important;filter:none;}
+}
 @media(prefers-reduced-motion:reduce){.product-photo{transition:none;}.product-card:hover .product-photo{background-size:cover;filter:none;}}
 
 /* Premium contact icon treatment */
