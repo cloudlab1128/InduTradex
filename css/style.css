@@ -13,13 +13,30 @@
   .product-photo{
     height:230px;
     background-size:contain !important;
-    background-position:center !important;
+    background-position:center center !important;
     background-repeat:no-repeat !important;
     background-color:#f5f1e7;
+  }
+  /* Keep these product visuals fully visible on phones — no cropping */
+  .photo-turmeric,
+  .photo-spices,
+  .photo-dry{
+    background-size:contain !important;
+    background-position:center center !important;
+    background-repeat:no-repeat !important;
+    background-color:#f5f1e7 !important;
   }
   .product-card:hover .product-photo{background-size:contain !important;filter:none;}
 }
 @media(prefers-reduced-motion:reduce){.product-photo{transition:none;}.product-card:hover .product-photo{background-size:cover;filter:none;}}
+/* Mobile full-image rule must remain active even with reduced-motion enabled */
+@media(max-width:520px){
+  .photo-turmeric,.photo-spices,.photo-dry,.photo-makhana,.photo-roasted{
+    background-size:contain !important;
+    background-position:center center !important;
+    background-repeat:no-repeat !important;
+  }
+}
 
 /* Premium contact icon treatment */
 .contact-item-premium > span:first-child{display:flex;align-items:center;gap:8px;margin-bottom:6px;color:#b58a3a;font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;}
